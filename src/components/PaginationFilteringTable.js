@@ -1,10 +1,11 @@
 import React, { useMemo } from "react";
-import { useTable, usePagination } from "react-table";
+import { useTable, usePagination, useGlobalFilter } from "react-table";
 import MOCK_DATA from "../constants/MOCK_DATA.json";
 import { COLUMNS } from "../constants/columns";
 import "./table.css";
+import { GlobalFilter } from "./GlobalFilter";
 
-export const PaginationTable = () => {
+export const PaginationFilteringTable = () => {
     const columns = useMemo(() => COLUMNS, []);
     const data = useMemo(() => MOCK_DATA, []);
 
@@ -19,19 +20,22 @@ export const PaginationTable = () => {
         canPreviousPage,
         pageOptions,
         state,
+        setGlobalFilter,
         prepareRow,
     } = useTable(
         {
             columns,
             data,
         },
+        useGlobalFilter,
         usePagination
     );
 
-    const { pageIndex } = state;
+    const { pageIndex, globalFilter } = state;
 
     return (
         <>
+            <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map((headerGroup) => (

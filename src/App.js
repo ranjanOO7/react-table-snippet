@@ -1,14 +1,16 @@
 import "./App.css";
 import { FilteringTable } from "./components/FilteringTable";
-// import { BasicTable } from "./components/BasicTable";
-// import { PaginationTable } from "./components/PaginationTable";
+import { BasicTable } from "./components/BasicTable";
+import { PaginationTable } from "./components/PaginationTable";
+import { PaginationFilteringTable } from "./components/PaginationFilteringTable";
 
 function App() {
     return (
         <div className="App">
             {/* <BasicTable /> */}
             {/* <PaginationTable /> */}
-            <FilteringTable />
+            {/* <FilteringTable /> */}
+            <PaginationFilteringTable />
         </div>
     );
 }
